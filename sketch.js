@@ -170,7 +170,7 @@ function draw() {
   
   drawSprites();
 }
-algo = 60
+algo = 80
 function spawnObstacles(){
   if (frameCount % 120 === 0){
     algo = algo - 1
