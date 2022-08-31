@@ -108,14 +108,13 @@ function draw() {
     
     //hacer que el trex salte al presionar la barra espaciadora
     if(keyDown("space") && jump == 0) {
-        trex.velocityY = trex.velocityY - 3;
+        trex.velocityY = trex.velocityY - 16;
         boom.stop();
         boom.play();
         jump = 1;
     }
     console.log("jump ",jump)
     if( trex.y <= height-185   ){
-      jump = 1;
       trex.changeAnimation("jumping",trex_jumping);
     }
     else {
@@ -210,10 +209,10 @@ function spawnObstacles(){
 function spawnClouds() {
   //escribir aquí el código para aparecer las nubes
   if (frameCount % 60 === 0) {
-     cloud = createSprite(600,100,40,10);
-    cloud.y = Math.round(random(10,60));
+     cloud = createSprite(width,100,40,10);
+    cloud.y = Math.round(random(heigth+10,heigth-100));
     cloud.addImage(cloudImage);
-    cloud.scale = 0.5;
+    cloud.scale = width/1600;
     cloud.velocityX = -3;
     
      //asignar lifetime a la variable
