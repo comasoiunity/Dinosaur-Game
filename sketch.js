@@ -155,7 +155,7 @@ function draw() {
      cloudsGroup.setVelocityXEach(0);
      if (mouseIsPressed === true){
         gameState = PLAY;
-        algo = 0;
+        algo = 80;
         obstaclesGroup.setLifetimeEach(0);
         cloudsGroup.setLifetimeEach(0);
         score = 0;
