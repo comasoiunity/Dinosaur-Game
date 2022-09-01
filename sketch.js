@@ -209,10 +209,10 @@ function spawnObstacles(){
 function spawnClouds() {
   //escribir aquí el código para aparecer las nubes
   if (frameCount % 60 === 0) {
-     cloud = createSprite(width,100,40,10);
+    cloud = createSprite(width,100,40,10);
     cloud.y = Math.round(random(heigth,heigth-200));
     cloud.addImage(cloudImage);
-    cloud.scale = width/1600;
+    cloud.scale = 1;
     cloud.velocityX = -3;
     
      //asignar lifetime a la variable
