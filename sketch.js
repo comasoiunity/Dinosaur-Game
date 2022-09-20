@@ -90,6 +90,8 @@ function draw() {
   
   
   if(gameState === PLAY){
+    obstaclesGroup.velocityX = (-6 * score/1000) - 6;
+
     gameOver.visible = false
     restart.visible = false
     //mover el suelo
@@ -108,13 +110,18 @@ function draw() {
     
     //hacer que el trex salte al presionar la barra espaciadora
     if(keyDown("space") && jump == 0) {
-        trex.velocityY = trex.velocityY - 16;
+        trex.velocityY = trex.velocityY - 4;
         boom.stop();
         boom.play();
         jump = 1;
     }
+    if( trex.y <= height-360){
+      trex.velocityY = 3;
+      trex.y = height-350 
+    }
+
     console.log("jump ",jump)
-    if( trex.y <= height-185   ){
+    if( trex.y <= height-199     ){    
       trex.changeAnimation("jumping",trex_jumping);
     }
     else {
@@ -154,7 +161,6 @@ function draw() {
      cloudsGroup.setVelocityXEach(0);
      if (mouseIsPressed === true){
         gameState = PLAY;
-        algo = 80;
         obstaclesGroup.setLifetimeEach(0);
         cloudsGroup.setLifetimeEach(0);
         score = 0;
@@ -170,7 +176,7 @@ function draw() {
   
   drawSprites();
 }
-algo = 80
+algo = 60
 function spawnObstacles(){
   if (frameCount % 120 === 0){
     algo = algo - 1
@@ -209,14 +215,14 @@ function spawnObstacles(){
 function spawnClouds() {
   //escribir aquí el código para aparecer las nubes
   if (frameCount % 60 === 0) {
-    cloud = createSprite(width,100,40,10);
-    cloud.y = Math.round(random(heigth,heigth-200));
+     cloud = createSprite(width,100,40,10);
+    cloud.y = Math.round(random(height-400,0));
     cloud.addImage(cloudImage);
-    cloud.scale = 1;
+    cloud.scale = width/1200;
     cloud.velocityX = -3;
     
      //asignar lifetime a la variable
-    cloud.lifetime = 134;
+    cloud.lifetime = width/3;
     
     //ajustar la profundidad
     cloud.depth = trex.depth;
